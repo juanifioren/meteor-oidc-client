@@ -1,5 +1,10 @@
 OIDC = {};
 
+Accounts.addAutopublishFields({
+    forLoggedInUser: ['services.oidc'],
+    forOtherUsers: ['services.oidc.id']
+});
+
 OAuth.registerService('oidc', 2, null, function(query) {
 
     var accessToken = getAccessToken(query);

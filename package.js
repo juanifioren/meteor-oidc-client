@@ -1,8 +1,8 @@
 Package.describe({
-    name: 'juanifioren:oidc',
+    name: 'juanifioren:oidc-client',
     version: '0.0.1',
     summary: 'OpenID Connect Flow',
-    git: 'https://github.com/juanifioren/meteor-oidc.git',
+    git: 'https://github.com/juanifioren/meteor-oidc-client.git',
     documentation: 'README.md'
 });
 

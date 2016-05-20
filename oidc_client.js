@@ -1,3 +1,5 @@
+Accounts.oauth.registerService('oidc');
+
 OIDC = {};
 
 OIDC.requestCredential = function (options, credentialRequestCompleteCallback) {
@@ -36,4 +38,15 @@ OIDC.requestCredential = function (options, credentialRequestCompleteCallback) {
         credentialToken: credentialToken,
         popupOptions: { width: 800, height: 700 }
     });
+};
+
+Meteor.loginWithOIDC = function(options, callback) {
+    // Support a callback without options.
+    if (! callback && typeof options === "function") {
+        callback = options;
+        options = null;
+    }
+
+    var credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback);
+    OIDC.requestCredential(options, credentialRequestCompleteCallback);
 };
