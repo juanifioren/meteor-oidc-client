@@ -1,6 +1,6 @@
-Accounts.oauth.registerService('oidc');
-
 OIDC = {};
+
+Accounts.oauth.registerService('oidc');
 
 OIDC.requestCredential = function (options, credentialRequestCompleteCallback) {
     // Support a callback without options.

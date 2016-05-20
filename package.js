@@ -1,15 +1,17 @@
 Package.describe({
     name: 'juanifioren:oidc-client',
     version: '0.0.1',
-    summary: 'OpenID Connect Flow',
+    summary: 'Generic OpenID Connect RP implementation for Meteor Accounts',
     git: 'https://github.com/juanifioren/meteor-oidc-client.git',
     documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-    api.use('oauth2', ['client', 'server']);
+    api.use('accounts-base', ['client', 'server']);
+    api.use('accounts-oauth', ['client', 'server']);
     api.use('oauth', ['client', 'server']);
-    api.use('http', ['server']);
+    api.use('oauth2', ['client', 'server']);
+    api.use('http', 'server');
     api.use('templating', 'client');
     api.use('underscore', 'client');
     api.use('random', 'client');

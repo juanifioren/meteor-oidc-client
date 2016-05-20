@@ -1,9 +1,6 @@
 OIDC = {};
 
-Accounts.addAutopublishFields({
-    forLoggedInUser: ['services.oidc'],
-    forOtherUsers: ['services.oidc.id']
-});
+Accounts.oauth.registerService('oidc');
 
 OAuth.registerService('oidc', 2, null, function(query) {
 
@@ -17,6 +14,11 @@ OAuth.registerService('oidc', 2, null, function(query) {
         },
         options: { profile: { name: identity.email } }
     };
+});
+
+Accounts.addAutopublishFields({
+    forLoggedInUser: ['services.oidc'],
+    forOtherUsers: ['services.oidc.id']
 });
 
 var getAccessToken = function (query) {
