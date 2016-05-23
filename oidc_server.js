@@ -30,7 +30,7 @@ var getAccessToken = function (query) {
 
     var response;
     try {
-        response = HTTP.post('http://localhost:8000/token', {
+        response = HTTP.post(config.tokenEndpoint, {
             params: {
                 code: query.code,
                 client_id: config.clientId,
@@ -52,8 +52,13 @@ var getAccessToken = function (query) {
 };
 
 var getIdentity = function (accessToken) {
+    var config = ServiceConfiguration.configurations.findOne({ service: 'oidc' });
+    if (!config) {
+        throw new ServiceConfiguration.ConfigError();
+    }
+
     try {
-        var response = HTTP.get('http://localhost:8000/userinfo', {
+        var response = HTTP.get(config.userinfoEndpoint, {
             params: {
                 access_token: accessToken
             }

@@ -23,7 +23,7 @@ OIDC.requestCredential = function (options, credentialRequestCompleteCallback) {
     var loginStyle = OAuth._loginStyle('oidc', config, options);
 
     var loginUrl =
-        'http://localhost:8000/authorize' +
+        config.authEndpoint +
         '?client_id=' + config.clientId +
         '&response_type=code' +
         '&scope=' + 'openid+' + flatScope +
